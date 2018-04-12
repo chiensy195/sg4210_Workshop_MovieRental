@@ -9,7 +9,7 @@ using MovieRental.Models;
 
 namespace MovieRental.Data
 {
-    class MovieRentalContext : DbContext
+    public class MovieRentalContext : DbContext
     {
         public MovieRentalContext()
             : base()
