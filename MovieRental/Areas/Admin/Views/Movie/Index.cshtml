@@ -4,11 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h6>Movies List</h6>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<p>@Html.ActionLink("Create New", "Create")</p>
+<p></p><a href="~/Admin/BulkLoad">Create Bulk</a></p>
+<p>@Html.ActionLink("Delete All","DeleteAll")</p>
+
 <table class="table">
     <tr>
         <th>
@@ -56,7 +57,7 @@
             @Html.DisplayFor(modelItem => item.Language)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Poster)
+            <img src="@Html.DisplayFor(modelIem => item.Poster)" alt="" width="80" height="120"/>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Plot)

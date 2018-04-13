@@ -4,13 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using MovieRental.Data;
+using MovieRental.Models;
+
 namespace MovieRental.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            return View();
+            MovieRepository rep = new MovieRepository();
+            IEnumerable<Movie> movies = rep.GetAllMovies();
+
+            return View(movies);
         }
 
         public ActionResult About()

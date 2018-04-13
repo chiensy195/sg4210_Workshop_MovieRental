@@ -57,6 +57,11 @@ namespace MovieRental.Data
             db.Movies.Remove(movie);
         }
 
+        public void DeleteAll()
+        {
+            db.Movies.RemoveRange(db.Movies);
+        }
+
         public void Save()
         {
             db.SaveChanges();
