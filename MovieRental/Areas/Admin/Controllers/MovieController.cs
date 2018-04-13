@@ -11,7 +11,7 @@ namespace MovieRental.Areas.Admin.Controllers
 {
     public class MovieController : Controller
     {
-        MOvieRepository rep = new MOvieRepository();
+        MovieRepository rep = new MovieRepository();
 
         // GET: Admin/Movie
         public ActionResult Index()
