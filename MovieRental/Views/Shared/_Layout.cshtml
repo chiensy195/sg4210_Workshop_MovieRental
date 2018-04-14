@@ -4,39 +4,44 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/favicon.ico" rel="shortcut icon icon" type="image/x-icon"/>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">@Html.ActionLink("quick*rental", "Index","Home")</p>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <div class="float-right">
+                @using (Ajax.BeginForm("Index","Home", new { genre = string.Empty},
+                    new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "main-content" }))
+                {
+                    @Html.TextBox("search")
+                    <input type="submit" value="Search"/>
+                }
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    </header>
+
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            <div id="main-content">@RenderBody()</div>
+        </section>
     </div>
 
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year  - My Asp.Net MVC Application</p>
+            </div>
+        </div>
+    </footer>
+    
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
     @RenderSection("scripts", required: false)
 </body>
 </html>
